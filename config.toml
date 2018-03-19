@@ -1,0 +1,10 @@
+author              = "Alex Hetherington"
+title               = "Footnotes for the Future"
+
+baseURL = "http://www.footnotesforthefuture.com/"
+
+[[menu.main]]
+name                   = "About"
+weight                 = -110
+identifier             = "about"
+url                    = "/about/"

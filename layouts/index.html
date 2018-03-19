@@ -1,0 +1,14 @@
+{{ partial "header.html" . }}
+
+{{range where .Pages ".Params.highlighted" true}}
+	<div class="highlightedContent">
+		<a href="{{ .Params.internallink }}"><img src="{{.Params.thumbnail}}" alt="{{.Params.title}} thumbnail" border="1"/><a>
+		<div>
+			<a href="{{ .Params.internallink }}"><h2>{{.Params.title}}</h2></a>
+			<p>{{ .Params.description }}</p>
+		</div>
+	</div>
+	
+{{end}}
+
+{{ partial "footer.html" . }}

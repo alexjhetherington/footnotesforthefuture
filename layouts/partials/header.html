@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ .Title }}</title>
+	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Codystar|Monoton" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+	{{ .Hugo.Generator }}
+</head>
+<body>
+	<header>
+		<div class="footnotes"> 
+			<a href="{{ .Site.BaseURL }}">
+				FOOTNOTES FOR THE FUTURE				
+				<div class="footnotesSubtitle">
+					by Alex Hetherington
+				</div>
+			</a>
+		</div>
+		<nav>
+			<ul>
+				{{ range .Site.Menus.main }}
+				<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+				{{ end }}
+			</ul>
+		</nav>
+	</header>
+	<hr>
+	<div class="content">
+	
