@@ -45,7 +45,6 @@ header{
 .aboutContent{
 	margin: inherit;
 	max-width: 570px;
-	margin-top: 3em;
 }
 
 sup{
@@ -209,6 +208,10 @@ footer a{
 article{
 	margin-left: 8px;
 	margin-right: 8px;
+}
+
+hr{
+	margin-bottom: 2em;
 }
 
 @media only screen and (max-width: 1000px) {
