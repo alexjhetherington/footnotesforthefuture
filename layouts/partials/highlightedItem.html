@@ -1,0 +1,9 @@
+{{$original := .Resources.GetMatch "thumbnail"}}
+{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
+<div class="highlight">
+	<a href="{{ .Scratch.Get "address" }}" class="highlightThumb"><img src="{{$image.Permalink}}" alt="{{.Params.title}}" border="1"/></a>
+	<div class="highlightText">
+		<a href="{{ .Scratch.Get "address" }}"><h2>{{.Params.title}}</h2></a>
+		<p>{{ .Params.description }}</p>
+	</div>
+</div>

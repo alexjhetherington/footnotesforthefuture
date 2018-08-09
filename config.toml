@@ -8,3 +8,6 @@ name                   = "About"
 weight                 = -110
 identifier             = "about"
 url                    = "/about/"
+
+[params]
+	highlightThumbnailSize	= "479x q100"

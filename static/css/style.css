@@ -1,5 +1,6 @@
 html {
   height: 100%;
+	overflow-y: scroll;
 }
 
 * {
@@ -24,19 +25,37 @@ html {
 }
 
 header{
-	margin-top: 2em;
-	margin-bottom: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
 	
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 900px;
+	max-width: 500px;
 }
 
 .content{
 	margin: auto;
-	max-width: 1100px;
 }
 
+.defaultSingleContent{
+	margin: inherit;
+	max-width: 800px;
+}
+
+.aboutContent{
+	margin: inherit;
+	max-width: 570px;
+	margin-top: 3em;
+}
+
+sup{
+	line-height:0em;
+}
+
+pre{
+	white-space: pre-wrap; 
+	word-wrap: break-word;
+}
 
 a{
 	color : black;
@@ -72,6 +91,11 @@ nav ul{
 }
 
 li{
+	margin-top: 0.4em;
+}
+
+footer li{
+	margin-top: 0em;
 	display: inline-block;
 }
 
@@ -80,7 +104,7 @@ nav ul a {
 	text-decoration:none;
 }
 
-a:hover{
+a:hover {
 	color : crimson;
 }
 
@@ -98,12 +122,9 @@ body {
 	font-size: 16px;
 }
 
-p{
+p {
 	line-height: 175%;
-	max-width: 514px;
-}
-
-h1{
+	margin-top: 0.4em;
 }
 
 footer {
@@ -119,30 +140,52 @@ footer {
 	font-size : 13px;
 }
 
-.highlightedContent{
-	margin-top: 3rem;
+.highlightedContent {
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.highlight{
 	text-align: center;
 }
 
-.highlightedContent div{
-	margin-left: 2rem;
-	margin-right: 2rem;
+.highlightText{
 	display: inline-block;
-	text-align: left;
+	width: 400px;
+	vertical-align: middle;	
+}
+
+.highlight div h2{
+}
+
+.highlightThumb{
+	margin-left: 2em;
+	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	display: inline-block;
 	vertical-align: middle;
 }
 
-.highlightedContent div h2{
-	text-align: center;
-}
-
-.highlightedContent img{
-	vertical-align: middle;
+h1{
+	font-family : Oswald;
+	letter-spacing : 0.05em;
+	font-size: 2.5em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 h2{
 	font-family : Oswald;
-	letter-spacing : 0.08em;
+	letter-spacing : 0.05em;
+}
+
+h3{
+	font-family : Oswald;
+	letter-spacing : 0.05em;
+	font-size: 1.4em;
+	margin-bottom : 0em;
 }
 
 img{
@@ -150,12 +193,22 @@ img{
 	height:auto;
 }
 
+p img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2.5em;
+	margin-bottom: 2.5em;
+	border: 1px solid #000000;
+}
+
 footer a{
 	text-decoration: none;
 }
 
 article{
-	margin-left: 10px;
+	margin-left: 8px;
+	margin-right: 8px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -173,10 +226,6 @@ article{
 		
 		hr{
 			margin: 0;
-		}
-		
-		.highlightedContent{
-			margin-top : 1.5rem; 
 		}
 		
 		header nav{

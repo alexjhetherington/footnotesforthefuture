@@ -1,14 +1,16 @@
 {{ partial "header.html" . }}
 
+<div class="highlightedContent">
 {{range where .Pages ".Params.highlighted" true}}
-	<div class="highlightedContent">
-		<a href="{{ .Params.internallink }}"><img src="{{.Params.thumbnail}}" alt="{{.Params.title}} thumbnail" border="1"/><a>
-		<div>
-			<a href="{{ .Params.internallink }}"><h2>{{.Params.title}}</h2></a>
-			<p>{{ .Params.description }}</p>
-		</div>
-	</div>
+
+	{{if (.Params.internallink) }}
+	{{.Scratch.Set "address" .Params.internallink}}
+	{{else}}
+	{{.Scratch.Set "address" .Permalink}}
+	{{end}}
+	{{partial "highlightedItem.html" .}}
 	
 {{end}}
+</div>
 
 {{ partial "footer.html" . }}
