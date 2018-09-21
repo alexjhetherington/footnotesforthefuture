@@ -5,6 +5,8 @@
 
 	{{if (.Params.internallink) }}
 	{{.Scratch.Set "address" .Params.internallink}}
+	{{else if (.Params.externallink) }}
+	{{.Scratch.Set "address" .Params.externallink}}
 	{{else}}
 	{{.Scratch.Set "address" .Permalink}}
 	{{end}}

@@ -1,7 +1,11 @@
-{{$original := .Resources.GetMatch "thumbnail"}}
-{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
 <div class="highlight">
+	{{if (.Params.youtubeEmbed)}}
+	<iframe class="highlightThumb" width="{{.Site.Params.highlightVideoWidth}}" height="{{.Site.Params.highlightVideoHeight}}" src="{{.Params.youtubeEmbed}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	{{else}}
+	{{$original := .Resources.GetMatch "thumbnail"}}
+	{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
 	<a href="{{ .Scratch.Get "address" }}" class="highlightThumb"><img src="{{$image.Permalink}}" alt="{{.Params.title}}" border="1"/></a>
+	{{end}}
 	<div class="highlightText">
 		<a href="{{ .Scratch.Get "address" }}"><h2>{{.Params.title}}</h2></a>
 		<p>{{ .Params.description }}</p>

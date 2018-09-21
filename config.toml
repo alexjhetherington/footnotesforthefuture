@@ -11,3 +11,5 @@ url                    = "/about/"
 
 [params]
 	highlightThumbnailSize	= "479x q100"
+	highlightVideoWidth = "479"
+	highlightVideoHeight = "260"

@@ -158,6 +158,10 @@ footer {
 .highlight div h2{
 }
 
+iframe{
+	border: 1px solid #000000;
+}
+
 .highlightThumb{
 	margin-left: 2em;
 	margin-right: 2em;
