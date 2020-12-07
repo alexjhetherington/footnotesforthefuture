@@ -14,6 +14,8 @@ resources:
 Wall Running in Unity: Making It Work, Making It Feel Good
 ===
 
+__UPDATE: I am looking for feedback on a very *very* early alpha of the game. Discord link: https://discord.gg/7nzsjUU __
+
 I'm currently using Unity to develop a first person platformer in which the player can run on walls.
 
 Here is my progress so far:
@@ -28,33 +30,65 @@ We don't need much to create the wall running effect:
 * A player whose movement we will abstractly define as a 3d vector every frame. I use the built in Character Controller<sup>[1]</sup> as a base
 * Raycasts<sup>[2]</sup>:  lasers we can fire at the environment that will report information about things they hit<sup>[3]</sup>
 
-The algorithm for basic wall running looks like this:
+At a high level the algorith for wall running is, each frame:
 
-1. Fire a short raycast to the left and right of the player
-* RaycastHit.collider doesn't equal null? That might be a wall...
-* RaycastHit.normal dot Vector3.Up equals 0? If yes, the two vectors are orthagonal which means the wall candidate is perpendicular to the ground. That's a runnable wall!
-* If both raycasts hit wall runnable walls, discard the one further away and keep the closest
-* If we have a runnable wall, enter wall running state (otherwise, exit here and wait until next frame)
-* RaycastHit.normal X Vector3.Up (cross product) gives us the orthagonal vector - which is the vector along the wall
-* Tell our character to move along this vector. Do something with vertical velocity (like ignore or limit it)
+1. Detect wall(s)
+* Select wall for wall running
+* Calculate wall running direction
+* Move
 
-That's it! Super simple. To make wall running work at consistent distances I raycast in multiple directions around the player like so.
+#### Detect Walls
+
+To detect a wall we fire a raycast from our character into the scene. Choosing where to fire our raycasts is intertwined with how we want to select our walls, so I will discuss that in the next section.
+
+Once we have fired our raycast into the scene, we will have a RaycastHit object that represents any collisions it made in the scene. Examining this we can evaluate whether it hit a runnable wall:
+
+1. RaycastHit.collider == null? If yes - it hit something! Maybe a wall...
+* RaycastHit.normal dot Vector3.Up == 0? If yes - the two vectors are orthagonal which means the wall candidate is perpendicular to the ground. That's a runnable wall!
+
+#### Select Walls
+
+Now we know how to find walls in the scene, we need to decide where to look. My approach has evolved over time.
+
+To begin wall running, we can fire raycasts all around the player.
 
 !["Raycasts image"](raycasts.png)
 
-In addition, I lock the player direction to forward along the wall while wall running (and then allow camera movement independently) to ensure wall checking is done consistently along the wall. In other words, even if the player looks away from their wall their 'body' is still perpendicular to it, and thus raycasts will be correctly sent towards it.
+We can then choose the nearest wall from the viable candidates by comparing RaycastHit.distance.
 
-Another key ingredient is to make the player wall run at a consistent distance from the wall. RaycastHit.normal and RaycastHit.point can be used to create a unity plane<sup>[4]</sup>. Plane.GetDistanceToPoint will tell us the current distance from wall. If the player is not at the desired distance, I add a small vector in the appropriate direction to the vector along the wall we calculated earlier. An even simpler approach would be to set the transform of the player directly to the appropriate distance.
+While wall running, we do not need to send raycasts all around the player. In this case we know we can expect a wall to the player's side so we can fire a single raycast directly at the wall.
 
-The final steps are to add a check to make sure the player is not on the ground, and to add a "wall run" button.
+The direction of the raycast is RaycastHit.normal * -1 i.e. the opposite of the vector that is pointing directly away from the wall.
 
-And that's it! Functional wall running!
+#### Calculate wall running direction
+
+RaycastHit.normal X Vector3.Up (cross product) gives us an orthagonal vector to "Directly Up" and "Perpendicular from the wall"- this is a vector along the wall. This is our move direction!
+
+We may need to multiple the resulting Vector by -1 if the player is facing the opposite way. You can check this by looking at the sign (positive or minus) of wallRunDirection dot (player forwards direction).
+
+You might choose player forwards to be the current look Vector, or the current move Vector.
+
+#### Move
+
+We have a wall and we have a direction. Now it is up to you to write code to move your player character in this direction. I will leave this as an excercise to you.
+
+A tip: RaycastHit.normal and RaycastHit.point can be used to create a unity plane<sup>[4]</sup>. Plane.GetDistanceToPoint will tell us the current distance from wall. You can use this to add a velocity or set the player's position so they arrive at the correct distance from the wall.
 
 ### Making it feel good
 
-To make wall running feel good we need to give the player feedback as they do it. We can do this by adjusting the physics of the wall run (e.g. what happens to vertical velocity during the wall run?) and by adding sound effects. We can also add screen effects that give the wall running a more distinct visual without touching the physics.
+To make wall running feel good we need to give the player feedback as they do it. Some ways we can do this are :
 
-The most common camera FX, seen in Mirror's Edge and Titanfall among other games, is a camera tilt during the wall run. Creating this effect is very simple. I use a tweening library called Leantween <sup>[5]</sup>. There are many other tweening libraries.
+1. Adjust the physics of the wall run
+* Add sound effects
+* Add UI changes
+* Add physical effects (e.g. the player's arm touching the wall)
+* Camera effects
+
+Most of these are out of the scope of the article, but I will talk about camera FX.
+
+#### Camera Tilt
+
+The most common camera FX, seen in Mirror's Edge and Titanfall for example, is a camera tilt during the wall run. Creating this effect is very simple. I use a tweening library called Leantween <sup>[5]</sup>. There are many other tweening libraries.
 
 The leantween version of this looks like:
 
@@ -62,11 +96,13 @@ The leantween version of this looks like:
 var rotateOut = LeanTween.rotateLocal(movementController.cameraRoll, new Vector3(0, 0, 12.5f * direction), timeToSnap).setEase(LeanTweenType.easeInOutCubic);
 ```
 
-I'll let you investigate the syntax but the punchline is that once this method has been called cameraRoll will be adjusted by 12.5 degrees over "timeToSnap" seconds.
+The syntax will vary by library but the point is that cameraRoll will be adjusted by 12.5 degrees over "timeToSnap" seconds.
 
 This camera tilt makes it clear to the player when wall running is happening.
 
 To make it clear that a wall run is about to end, we can slowly reduce the camera tilt such that the camera returns to 0 degrees of tilt at the same time as the player is ejected from the wall (appropriate when there is a time limit on wall running). You can see this effect in Titanfall 2.
+
+#### Camera Rotate
 
 Titanfall 2 does another very useful thing. The player never wants to look into the wall; it stops them from seeing where they are going. We can add a smooth rotation away from the wall so that the player doesn't need to adjust the view themselves and can concentrate on planning their route through the level.
 
@@ -76,7 +112,9 @@ Here is a comparison of wall running with and without camera FX. The camera look
 
 ![Camera FX examples](https://thumbs.gfycat.com/FirsthandIndolentFairyfly-size_restricted.gif)
 
-### Jumping off walls
+### Extras
+
+#### Jumping off walls
 
 Wall jumping is relatively straight forward. The small gotcha is stopping the player from instantly reconnecting to the wall they just jumped from.
 
@@ -86,7 +124,7 @@ I keep a record of the last RaycastHit.normal that caused the player to enter or
 
 As soon as a player hits a new wall, the last RaycastHit.normal is overriden, effectively removing the cooldown on that wall. This means a player can bounce between two walls as fast as they can travel between them. I'm happy with this behaviour.
 
-### Catching on corners
+#### Catching on corners
 
 After much playtesting I discovered an edge case that was incredibly frustrating. If a player went near a wall intending to pass it, wall running would still sometimes be triggered interrupting the players movement.
 
@@ -98,7 +136,7 @@ This is illustrated best by the below gif (it may be difficult to see but there 
 
 This forward check needs to be disabled if the player is already wall running because we want to allow the player to look away from walls while doing so.
 
-### The Big One
+#### Connecting near corners
 
 A whole host of obscure edge cases were solved with one change. Here is the example I struggled to understand for days.
 
@@ -115,6 +153,16 @@ The requirement to be facing the wall is dropped. ***Even though player has begu
 The solution is to record the point at which the player connected with the wall. ***Note*** This point is at which the raycast hit the wall first, not where the player was located at the time. When checking for wall candidates, we can then discard any raycast hits that land 'behind' this point.
 
 When the player is located behind this first hit point (happens at the start of the wall run), I probe a special calculated raycast directly to the hitpoint, to ensure the current wall is correctly checked.
+
+#### Going around corners
+
+This approach to wall running should work around corners without much modification.
+
+Going around the outside of corners will require a raycast distance further than the distance the player connects to the wall.
+
+I also noticed jittery behaviour on corners as the player character cannot decide which wall to stick with.
+
+To solve this I added an additional small cooldown for connecting to the previous wall normal when switching to a new wall.
 
 ### Conclusion
 
