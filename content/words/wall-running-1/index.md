@@ -14,7 +14,7 @@ resources:
 Wall Running in Unity: Making It Work, Making It Feel Good
 ===
 
-__UPDATE: I am looking for feedback on a very *very* early alpha of the game. Discord link: https://discord.gg/7nzsjUU __
+**UPDATE: I am looking for feedback on a very *very* early alpha of the game. Discord link: https://discord.gg/7nzsjUU**
 
 I'm currently using Unity to develop a first person platformer in which the player can run on walls.
 
