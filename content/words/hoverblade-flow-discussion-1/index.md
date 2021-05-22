@@ -4,7 +4,7 @@ date: 2020-12-29T15:23:08+01:00
 draft: false
 
 highlighted: true
-description: "At the time of writing I'm not sure of a good solution. Very open to tweets and mails with suggestions!"
+description: "The reason Hoverblade exists. An experience very few games give me."
 
 resources:
 - name: thumbnail
@@ -162,8 +162,29 @@ The theory is that players will eventually learn that to keep their combo going 
 
 ![Hoverblade area gif](https://thumbs.gfycat.com/WideImpassionedHorsechestnutleafminer-size_restricted.gif)
 
+### [Update 22/05/2021] Paths - A Solution!
+
+For this article I have drawn diagrams with the paths I hope players would take on subsequent travel through different areas. It would be so easy if I could just draw the paths in game! There is precedent for this; other games feature races that are displayed as a linear path that 'lights up' as the player progresses down the path. But initially I rejected this idea for the following reasons:
+
+* Showing all possible paths is visually noisy
+* Showing all possible paths is difficult (impossible?)
+* Littering the map with paths implies that non-marked areas are not traversable
+* Players may try to complete all paths as they see them, causing the player to take non-flowy routes between paths
+
+But there's a simple soution! Display only a random subset of paths; as paths are completed display a currently inactive path (including paths already completed):
+
+* No visual noise
+* Players are trained that areas they may have considered non-traversable are actually traversable, based on the appearance of unexpected paths
+* Because paths come back, paths become 'optional', and the player is free to follow or ignore them
+
+Here all the paths are displayed together (also with a new art style!):
+
+![Hoverblade paths still](paths.PNG)
+
 ## Conclusion
 
-So I'm still stuck with it. The collectable combo is not quite enough. I have a few other theories but if you have any suggestions pop by my discord https://discord.gg/7nzsjUU, email me at footnotesforthefuture@gmail.com, or tweet me at @FootnotesFuture. And if you have any game recommendations that feature Pathfinding Flow, for goodness sake please get in touch with me. I need more!
+So there it is. A solution I'm happy with. From very limited external playtesting it seems to be fun. It remains to be seen whether a wider audience will interact with paths in the way I expect. 
+
+If you have any game recommendations that feature Pathfinding Flow, for goodness sake please get in touch with me. I need more!
 
 [1]: https://en.wikipedia.org/wiki/Flow_(psychology)
