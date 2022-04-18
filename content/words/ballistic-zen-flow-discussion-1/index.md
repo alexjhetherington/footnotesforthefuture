@@ -1,26 +1,26 @@
 ---
-title: "Designing Flow in Hoverblade"
+title: "Designing Flow in Ballistic Zen"
 date: 2020-12-29T15:23:08+01:00
 draft: false
 
 highlighted: true
-description: "The reason Hoverblade exists. An experience very few games give me."
+description: "The reason Ballistic Zen exists. An experience very few games give me."
 
 resources:
 - name: thumbnail
   src: hoverblade-area-route-1.PNG
 ---
 
-Designing Flow in Hoverblade
+Designing Flow in Ballistic Zen
 ===
 
-**Download the free alpha of Hoverblade from my discord: https://discord.gg/7nzsjUU**
+** Discuss the game on my discord: https://discord.gg/7nzsjUU and wishlist here: https://store.steampowered.com/app/1966930/Ballistic_Zen/**
 
-My main motivation for creating Hoverblade is to try and replicate a rare and distinct feeling that only a few other games give me. I'll call this feeling Flow.
+My main motivation for creating Ballistic Zen is to try and replicate a rare and distinct feeling that only a few other games give me. I'll call this feeling Flow.
 
-Although I can play Hoverblade myself and feel Flow, it's clear from watching friends and play testers that in the alpha version there is not enough guidance, encouragement or reward for playing the game in the way I intend; others play Hoverblade in a different way from me.
+Although I can play Ballistic Zen myself and feel Flow, it's clear from watching friends and play testers that in the alpha version there is not enough guidance, encouragement or reward for playing the game in the way I intend; others play Ballistic Zen in a different way from me.
 
-The purpose of this article is to define Flow in Hoverblade, to describe the differences in the way that I play vs the way that others play, and to suggest some possible solutions. It's to help me organise my thoughts, and to introduce the problem to anyone who is interested in helping me design a solution.
+The purpose of this article is to define Flow in Ballistic Zen, to describe the differences in the way that I play vs the way that others play, and to suggest some possible solutions. It's to help me organise my thoughts, and to introduce the problem to anyone who is interested in helping me design a solution.
 
 ## What is Flow?
 
@@ -47,7 +47,7 @@ Another example of smooth movement is "surfing". Here is an example from Counter
 
 ![Surfing linear example](https://thumbs.gfycat.com/IcyEmbellishedBergerpicard-size_restricted.gif)
 
-This is also a linear level that requires mastery. Notice that the player is forced to take corners smoothly in order to maintain their speed. This is a key mechanic of Hoverblade also.
+This is also a linear level that requires mastery. Notice that the player is forced to take corners smoothly in order to maintain their speed. This is a key mechanic of Ballistic Zen also.
 
 ### Pathfinding Flow
 
@@ -71,7 +71,7 @@ The loops are complicated enough that **the player is not encouraged to plan the
 
 In this case there is a strong focus on paths that can be traversed in one direction. This leads to paths being repeated multiple times and increases the overall length of the level.  
 
-There are also many paths that are adjacent to each other in literal forks. A player could exit one of these paths then do a U-turn to enter the adjacent path, but since this reduces flow it is not optimal in my eyes. I don't have enough testers to be sure but I suspect speedrunners would find the optimally short path, sacrificing their movement Flow to take these U-turns. Encouraging them not to do this is related to the problem I face in Hoverblade.
+There are also many paths that are adjacent to each other in literal forks. A player could exit one of these paths then do a U-turn to enter the adjacent path, but since this reduces flow it is not optimal in my eyes. I don't have enough testers to be sure but I suspect speedrunners would find the optimally short path, sacrificing their movement Flow to take these U-turns. Encouraging them not to do this is related to the problem I face in Ballistic Zen.
 
 Another from the very short list of games with Pathfinding Flow is the *Freestyle* approach to surfing.
 
@@ -89,13 +89,13 @@ In N v1.4, the player decides *which path will take me to the next button*. In s
 
 N v1.4 requires some more forward planning, and freestyle surfing has more open paths, but the two mindsets are very similar.
 
-## Flow In Hoverblade
+## Flow In Ballistic Zen
 
-In Hoverblade turning the mouse smoothly speeds up the player character. Turning it unsmoothly slows the player character down. The player can run on and clamber up walls without losing speed. The movement component of Flow, while it could use tweaks, is already implemented well enough.
+In Ballistic Zen turning the mouse smoothly speeds up the player character. Turning it unsmoothly slows the player character down. The player can run on and clamber up walls without losing speed. The movement component of Flow, while it could use tweaks, is already implemented well enough.
 
-![Hoverblade flow example](https://thumbs.gfycat.com/GoodnaturedElementaryGartersnake-size_restricted.gif)
+![Ballistic Zen flow example](https://thumbs.gfycat.com/GoodnaturedElementaryGartersnake-size_restricted.gif)
 
-Hoverblade is set in one large freely explorable level. The main game is a series of events that are generally linear routes taken from some subsection of the main level.
+Ballistic Zen is set in one large freely explorable level. The main game is a series of events that are generally linear routes taken from some subsection of the main level.
 
 In the downtime between events the player is free to explore. My goal is to offer a set of mechanics that **strongly encourage** or even **require** that the player experiences both Movement Flow and Pathfinding Flow i.e. the player utilises the existing movement while undergoing the constant route planning decision process I described above.
 
@@ -107,36 +107,36 @@ These passive rewards are not really a solution because a reward for movement fl
 
 In addition there is **already** a turning smoothness indicator, although as an instantaneous measure *it doesn't report continuous smoothness* in the way that using a timeout, or a counter that goes up or down does.
 
-### What Does Route Planning Mean For Hoverblade?
+### What Does Route Planning Mean For Ballistic Zen?
 
-The world of Hoverblade is structured into a series of *Hubs* that are connected by *Spokes*. Below is an image of roughly 1/5 of the world, with the main Hubs and Spokes outlined. Hubs are landmark areas that are small, open, and don't require any technical mastery to traverse. Spokes are linear routes with multiple traversal options over the same route. Spokes can connect with each other. Each Spoke may have multiple *Paths* to traverse it. Paths are not shown on the diagram
+The world of Ballistic Zen is structured into a series of *Hubs* that are connected by *Spokes*. Below is an image of roughly 1/5 of the world, with the main Hubs and Spokes outlined. Hubs are landmark areas that are small, open, and don't require any technical mastery to traverse. Spokes are linear routes with multiple traversal options over the same route. Spokes can connect with each other. Each Spoke may have multiple *Paths* to traverse it. Paths are not shown on the diagram
 
-![Hoverblade route overview example](hoverblade-overview-lines.PNG)
+![Ballistic Zen route overview example](hoverblade-overview-lines.PNG)
 
 The unmarked areas are generally shortcuts, "longcuts", or areas with dead ends that are intended for exploration.
 
-To demonstrate further, here is an area in hoverblade that we can consider a spoke:
+To demonstrate further, here is an area in Ballistic Zen that we can consider a spoke:
 
-![Hoverblade area](hoverblade-area-2-abstract.PNG)
+![Ballistic Zen area](hoverblade-area-2-abstract.PNG)
 
 It has an entrace and exit, and can be traversed forwards and back.
 
 An example of traversing up:
 
-![Hoverblade area still](hoverblade-area-route-1.PNG)
-![Hoverblade area gif](https://thumbs.gfycat.com/BitesizedUnripeAntarcticgiantpetrel-size_restricted.gif)
+![Ballistic Zen area still](hoverblade-area-route-1.PNG)
+![Ballistic Zen area gif](https://thumbs.gfycat.com/BitesizedUnripeAntarcticgiantpetrel-size_restricted.gif)
 
 A second example of traversing up:
 
-![Hoverblade area still](hoverblade-area-2-route-1.PNG)
-![Hoverblade area gif](https://thumbs.gfycat.com/NastyEvenBluegill-size_restricted.gif)
+![Ballistic Zen area still](hoverblade-area-2-route-1.PNG)
+![Ballistic Zen area gif](https://thumbs.gfycat.com/NastyEvenBluegill-size_restricted.gif)
 
 An example of traversing down:
 
-![Hoverblade area still](hoverblade-area-route-2.PNG)
-![Hoverblade area gif](https://thumbs.gfycat.com/UnconsciousTanIraniangroundjay-size_restricted.gif)
+![Ballistic Zen area still](hoverblade-area-route-2.PNG)
+![Ballistic Zen area gif](https://thumbs.gfycat.com/UnconsciousTanIraniangroundjay-size_restricted.gif)
 
-The examples above illustrate the mental model I want players to have while playing Hoverblade.
+The examples above illustrate the mental model I want players to have while playing Ballistic Zen.
 
 I want to introduce a mechanic that will train players to **see, think and plan in terms of paths**. Further, I don't want to predefine paths. Players should learn how to see them themselves. If a spoke is traversed multiple times, the mechanic should encourage the player to take different paths each time.
 
@@ -156,11 +156,11 @@ My current working solution is a collectables combo system. The player finds an 
 
 Here I take one of the paths I outlined above up the Spoke, then another of the paths back down, leaving me with remaining time to continue my combo elsewhere.
 
-![Hoverblade area gif](https://thumbs.gfycat.com/DelayedDesertedBordercollie-size_restricted.gif)
+![Ballistic Zen area gif](https://thumbs.gfycat.com/DelayedDesertedBordercollie-size_restricted.gif)
 
 The theory is that players will eventually learn that to keep their combo going for as long as possible they must tactically leave collectables to come back and pick them up later, but there is not nearly enough incentive to do that: players beeline straight for the collectables, killing their Movement and Pathfinding Flow (next time they come round, there are no collectables to suggest to them a path to travel down).
 
-![Hoverblade area gif](https://thumbs.gfycat.com/WideImpassionedHorsechestnutleafminer-size_restricted.gif)
+![Ballistic Zen area gif](https://thumbs.gfycat.com/WideImpassionedHorsechestnutleafminer-size_restricted.gif)
 
 ### [Update 22/05/2021] Paths - A Solution!
 
@@ -179,7 +179,7 @@ But there's a simple soution! Display only a random subset of paths; as paths ar
 
 Here all the paths are displayed together (also with a new art style!):
 
-![Hoverblade paths still](paths.PNG)
+![Ballistic Zen paths still](paths.PNG)
 
 ## Conclusion
 
