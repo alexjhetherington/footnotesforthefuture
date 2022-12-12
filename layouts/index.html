@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 
 <div class="highlightedContent">
-{{range where .Pages ".Params.highlighted" true}}
+	{{range where .Pages ".Params.pinned" true}}
 
 	{{if (.Params.internallink) }}
 	{{.Scratch.Set "address" .Params.internallink}}
@@ -11,8 +11,22 @@
 	{{.Scratch.Set "address" .Permalink}}
 	{{end}}
 	{{partial "highlightedItem.html" .}}
-	
-{{end}}
+
+	{{end}}
+	{{range where .Pages ".Params.highlighted" true}}
+	{{if or (eq .Params.pinned false) (eq .Params.pinned nil)}}
+
+	{{if (.Params.internallink) }}
+	{{.Scratch.Set "address" .Params.internallink}}
+	{{else if (.Params.externallink) }}
+	{{.Scratch.Set "address" .Params.externallink}}
+	{{else}}
+	{{.Scratch.Set "address" .Permalink}}
+	{{end}}
+	{{partial "highlightedItem.html" .}}
+
+	{{end}}
+	{{end}}
 </div>
 
 {{ partial "footer.html" . }}
