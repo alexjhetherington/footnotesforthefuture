@@ -145,8 +145,8 @@ footer {
 }
 
 .pinned {
-	background: lavender;
-	border-radius: 10px 50px 10px 10px
+	background: rgb(241, 241, 239);
+	border-radius: 5px 50px 5px 5px
 }
 
 .highlightedContent {
