@@ -4,10 +4,10 @@ title               = "Footnotes for the Future"
 baseURL = "http://www.footnotesforthefuture.com/"
 
 [[menu.main]]
-name                   = "About"
+name                   = "Links"
 weight                 = -110
-identifier             = "about"
-url                    = "/about/"
+identifier             = "link"
+url                    = "/links/"
 
 [params]
 	highlightThumbnailSize	= "479x q100"
