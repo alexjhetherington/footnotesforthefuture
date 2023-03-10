@@ -1,28 +1,28 @@
 {{if (.Params.pinned)}}
 <div class="highlight pinned">
-	{{else}}
-	<div class="highlight">
-		{{end}}
-		{{if (.Params.youtubeEmbed)}}
-		<div class="highlightThumb">
-			<div class="videoEmbed">
-				{{$headless := .Site.GetPage "/shared-media" }}
-				{{$original := $headless.Resources.GetMatch "ratioPlaceholder"}}
-				{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
-				<img class="ratio-img" src="{{$image.Permalink}}" alt="16:9 Image" />
-				<iframe src="{{.Params.youtubeEmbed}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-			</div>
-		</div>
-		{{else}}
-		{{$original := .Resources.GetMatch "thumbnail"}}
-		{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
-		<a href="{{ .Scratch.Get "address" }}" class="highlightThumb"><img src="{{$image.Permalink}}"
-				alt="{{.Params.title}}" border="1" /></a>
-		{{end}}
-		<div class="highlightText">
-			<a href="{{ .Scratch.Get "address" }}">
-				<h2>{{.Params.title}}</h2>
-			</a>
-			<p>{{ .Params.description }}</p>
+{{else}}
+<div class="highlight">
+{{end}}
+	{{if (.Params.youtubeEmbed)}}
+	<div class="highlightThumb">
+		<div class="videoEmbed">
+			{{$headless := .Site.GetPage "/shared-media" }}
+			{{$original := $headless.Resources.GetMatch "ratioPlaceholder"}}
+			{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
+			<img class="ratio-img" src="{{$image.Permalink}}" alt="16:9 Image" />
+			<iframe src="{{.Params.youtubeEmbed}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 		</div>
 	</div>
+	{{else}}
+	{{$original := .Resources.GetMatch "thumbnail"}}
+	{{$image := ($original.Resize .Site.Params.highlightThumbnailSize)}}
+	<a href="{{ .Scratch.Get "address" }}" class="highlightThumb"><img src="{{$image.Permalink}}"
+			alt="{{.Params.title}}" border="1" /></a>
+	{{end}}
+	<div class="highlightText">
+		<a href="{{ .Scratch.Get "address" }}">
+			<h2>{{.Params.title}}</h2>
+		</a>
+		<p>{{ .Params.description }}</p>
+	</div>
+</div>
