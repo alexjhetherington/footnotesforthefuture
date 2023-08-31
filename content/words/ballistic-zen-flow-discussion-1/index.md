@@ -14,7 +14,7 @@ resources:
 Designing Flow in Ballistic Zen
 ===
 
-** Discuss the game on my discord: https://discord.gg/7nzsjUU and wishlist here: https://store.steampowered.com/app/1966930/Ballistic_Zen/**
+**Ballistic Zen is now available to purchase on [Steam](https://store.steampowered.com/app/1966930/Ballistic_Zen/), and you can discuss the game on my [discord](https://discord.gg/7nzsjUU).**
 
 My main motivation for creating Ballistic Zen is to try and replicate a rare and distinct feeling that only a few other games give me. I'll call this feeling Flow.
 
