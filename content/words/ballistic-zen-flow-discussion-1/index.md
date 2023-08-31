@@ -39,13 +39,13 @@ There are already many games that feature "flowy" movement systems. Titanfall 2,
 
 Here is an example of a race from the game N v1.4. 
 
-![N linear example](https://thumbs.gfycat.com/ImpossibleAnnualFlicker-size_restricted.gif)
+![N linear example](g1_n_race.gif)
 
 This is a linear map that needs to be practiced. Once the level is mastered the character moves with a pleasing smoothness as they are guided round the level by a combination of player input and the physical geometry.
 
 Another example of smooth movement is "surfing". Here is an example from Counterstrike: Source.
 
-![Surfing linear example](https://thumbs.gfycat.com/IcyEmbellishedBergerpicard-size_restricted.gif)
+![Surfing linear example](g2_linear_surf.gif)
 
 This is also a linear level that requires mastery. Notice that the player is forced to take corners smoothly in order to maintain their speed. This is a key mechanic of Ballistic Zen also.
 
@@ -55,7 +55,7 @@ The above examples of Movement Flow require that the player must practice the ro
 
 But a feeling of improvisation can be introduced by using non-linearity and loops. See another N v1.4 level:
 
-![N non-linear example](https://thumbs.gfycat.com/HarmlessUnsteadyCirriped-size_restricted.gif)
+![N non-linear example](g3_n_euler.gif)
 
 To make the loops and non-linear routes more explicit, I have drawn them below:
 
@@ -75,7 +75,7 @@ There are also many paths that are adjacent to each other in literal forks. A pl
 
 Another from the very short list of games with Pathfinding Flow is the *Freestyle* approach to surfing.
 
-![Surfing non-linear example](https://thumbs.gfycat.com/ThirdImmaculateCats-size_restricted.gif)
+![Surfing non-linear example](g4_combat_surf.gif)
 
 Freestyle surf maps were originally intended to be combat surf maps: 2 teams fight against each other using guns while surfing. Combat surf necessesitates relatively small arenas including teleports and boosts to make it easy enough to travel to anywhere another player might be, in a reasonably small amount of time.
 
@@ -93,7 +93,7 @@ N v1.4 requires some more forward planning, and freestyle surfing has more open 
 
 In Ballistic Zen turning the mouse smoothly speeds up the player character. Turning it unsmoothly slows the player character down. The player can run on and clamber up walls without losing speed. The movement component of Flow, while it could use tweaks, is already implemented well enough.
 
-![Ballistic Zen flow example](https://thumbs.gfycat.com/GoodnaturedElementaryGartersnake-size_restricted.gif)
+![Ballistic Zen flow example](g5_bz_walls.gif)
 
 Ballistic Zen is set in one large freely explorable level. The main game is a series of events that are generally linear routes taken from some subsection of the main level.
 
@@ -124,17 +124,17 @@ It has an entrace and exit, and can be traversed forwards and back.
 An example of traversing up:
 
 ![Ballistic Zen area still](hoverblade-area-route-1.PNG)
-![Ballistic Zen area gif](https://thumbs.gfycat.com/BitesizedUnripeAntarcticgiantpetrel-size_restricted.gif)
+![Ballistic Zen area gif](g6_bz_up1.gif)
 
 A second example of traversing up:
 
 ![Ballistic Zen area still](hoverblade-area-2-route-1.PNG)
-![Ballistic Zen area gif](https://thumbs.gfycat.com/NastyEvenBluegill-size_restricted.gif)
+![Ballistic Zen area gif](g7_bz_up2.gif)
 
 An example of traversing down:
 
 ![Ballistic Zen area still](hoverblade-area-route-2.PNG)
-![Ballistic Zen area gif](https://thumbs.gfycat.com/UnconsciousTanIraniangroundjay-size_restricted.gif)
+![Ballistic Zen area gif](g8_bz_down.gif)
 
 The examples above illustrate the mental model I want players to have while playing Ballistic Zen.
 
@@ -156,11 +156,11 @@ My current working solution is a collectables combo system. The player finds an 
 
 Here I take one of the paths I outlined above up the Spoke, then another of the paths back down, leaving me with remaining time to continue my combo elsewhere.
 
-![Ballistic Zen area gif](https://thumbs.gfycat.com/DelayedDesertedBordercollie-size_restricted.gif)
+![Ballistic Zen area gif](g9_bz_combo.gif)
 
 The theory is that players will eventually learn that to keep their combo going for as long as possible they must tactically leave collectables to come back and pick them up later, but there is not nearly enough incentive to do that: players beeline straight for the collectables, killing their Movement and Pathfinding Flow (next time they come round, there are no collectables to suggest to them a path to travel down).
 
-![Ballistic Zen area gif](https://thumbs.gfycat.com/WideImpassionedHorsechestnutleafminer-size_restricted.gif)
+![Ballistic Zen area gif](g10_bz_combo_jank.gif)
 
 ### [Update 22/05/2021] Paths - A Solution!
 

@@ -20,7 +20,7 @@ I'm currently using Unity to develop a first person platformer in which the play
 
 Here is my progress so far:
 
-![Wall Running Example](https://thumbs.gfycat.com/ConcretePlumpBernesemountaindog-size_restricted.gif)
+![Wall Running Example](g1_wallrun.gif)
 
 ### Basic wall running
 
@@ -110,7 +110,7 @@ Because we want to allow the player to adjust their rotational view even as the 
 
 Here is a comparison of wall running with and without camera FX. The camera look rotation effect especially can be quite subtle.
 
-![Camera FX examples](https://thumbs.gfycat.com/FirsthandIndolentFairyfly-size_restricted.gif)
+![Camera FX examples](g2_cam_fx.gif)
 
 ### Extras
 
@@ -132,7 +132,7 @@ To fix this I added an additional check. After viable walls have been found, I d
 
 This is illustrated best by the below gif (it may be difficult to see but there is a crosshair that indicates exactly where the player is looking).
 
-![Look Checking Example](https://thumbs.gfycat.com/GrizzledFrailDowitcher-size_restricted.gif)
+![Look Checking Example](g3_cam_fx_fix.gif)
 
 This forward check needs to be disabled if the player is already wall running because we want to allow the player to look away from walls while doing so.
 
@@ -170,7 +170,7 @@ The best way to figure this stuff out is to obsessively play and study other gam
 
 Here's the final product again:
 
-![Wall Running Example](https://thumbs.gfycat.com/IncredibleReliableGoral-size_restricted.gif)
+![Wall Running Example](g1_wallrun.gif)
 
 If you have any questions feel free to mail me or tweet me (I don't use twitter proactively but I do receive notifications for tweets).
 
