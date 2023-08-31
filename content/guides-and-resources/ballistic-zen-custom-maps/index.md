@@ -17,9 +17,7 @@ Ballistic Zen Custom Maps Tutorial
 
 Version 1.5 of [Ballistic Zen]((https://store.steampowered.com/app/1966930/Ballistic_Zen/)) brings custom maps. Version 1.4 of [Ballistic Zen](https://store.steampowered.com/app/1966930/Ballistic_Zen/) previously brought custom lines. This page will explain how to create and use both.
 
-Custom maps are not fully implemented yet, and so are only available to paid users ([steam](https://store.steampowered.com/app/1966930/Ballistic_Zen/), or chose to pay on [itch](https://footnotesforthefuture.itch.io/ballistic-zen)). I would like to understand how much appetite for user generated content there is; if this release causes a spike in sales I will consider further development.
-
-**If you desperately want to be part of the custom maps community but cannot afford the game, please don't hesitate to buy the game on Itch for the smallest possible amount of currency. This signals to me user generated content is very important to you!**
+Custom maps are not fully implemented yet. If you'd like me to work on them more, please buy the game on [steam](https://store.steampowered.com/app/1966930/Ballistic_Zen/), or chose to pay on [itch](https://footnotesforthefuture.itch.io/ballistic-zen). I would like to understand how much appetite for user generated content there is; if this release causes a spike in sales I will consider further development.
 
 **Custom maps** are built in Trenchbroom and currently support:
 

@@ -8,14 +8,20 @@ html {
 	box-sizing: border-box;
 }
 
+h2 {
+	font-size: 26px;
+	font-weight: 500;
+}
+
 .footnotes {
 	vertical-align: middle;
-	font-family: Monoton;
+	font-family: "Source Code Pro";
 	font-size: 24px;
 	display: inline-block;
 }
 
 .footnotesSubtitle {
+	margin-top: 2px;
 	font-size: 16px;
 	font-family: Roboto;
 }
@@ -31,7 +37,7 @@ header {
 
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 500px;
+	max-width: 800px;
 }
 
 .content {
@@ -80,18 +86,18 @@ li a {
 }
 
 nav {
-	display: inline-block;
 	vertical-align: middle;
 	font-weight: bold;
 
 	font-family: Roboto;
 	letter-spacing: 0.08em;
+	display: inline-block;
 }
 
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	margin-top: 1em;
+nav li {
+	margin-left: 2em;
+	margin-right: 2em;
+	display: inline-block;
 }
 
 li {
@@ -145,8 +151,25 @@ footer {
 }
 
 .pinned {
-	background: rgb(241, 241, 239);
-	border-radius: 5px 50px 5px 5px
+	background: rgb(32, 32, 32);
+	/*border-radius: 5px 5px 5px 5px;*/
+	border-style: solid;
+	border-color: crimson;
+	border-width: 5px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: solid;
+	color: ghostwhite;
+}
+
+.pinned h2 {
+	color: ghostwhite;
+}
+
+.pinned * {
+	box-sizing: border-box;
+	border-color: gainsboro;
 }
 
 .highlightedContent {
@@ -164,8 +187,6 @@ footer {
 	width: 300px;
 	vertical-align: middle;
 }
-
-.highlight div h2 {}
 
 iframe {
 	border: 1px solid #000000;
