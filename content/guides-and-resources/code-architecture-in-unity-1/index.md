@@ -9,6 +9,9 @@ description: "A practical guide for those who are as confused as I was."
 resources:
 - name: thumbnail
   src: code-unity.PNG
+
+tags:
+- game-dev
 ---
 
 ** Discuss Ballistic Zen on my discord: https://discord.gg/7nzsjUU and wishlist here: https://store.steampowered.com/app/1966930/Ballistic_Zen/**

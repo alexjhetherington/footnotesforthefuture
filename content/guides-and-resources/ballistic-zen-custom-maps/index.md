@@ -3,11 +3,14 @@ title: "Ballistic Zen Custom Maps Tutorial"
 date: 2023-03-01T15:23:08+01:00
 draft: false
 highlighted: true
-description: "It's janky, yes. But who doesn't love jank?"
+description: "Short guide to using Ballistic Zen's experimental custom maps feature."
 
 resources:
 - name: thumbnail
   src: trenchboom-overview.PNG
+
+tags:
+- Game Dev
 ---
 
 Ballistic Zen Custom Maps Tutorial

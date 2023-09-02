@@ -1,0 +1,21 @@
+{{ partial "header.html" . }}
+
+<div class="everythingContent">
+    {{ range .Site.Pages }}
+    {{if and (ne .Params.date nil) (not .Params.hiddenFromSiteMap)}}
+
+    {{if (.Params.internallink) }}
+    {{.Scratch.Set "address" .Params.internallink}}
+    {{else if (.Params.externallink) }}
+    {{.Scratch.Set "address" .Params.externallink}}
+    {{else}}
+    {{.Scratch.Set "address" .Permalink}}
+    {{end}}
+    
+    {{partial "everythingItem.html" .}}
+
+    {{end}}
+    {{end}}
+</div>
+
+{{ partial "footer.html" . }}

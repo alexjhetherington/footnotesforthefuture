@@ -4,11 +4,14 @@ date: 2020-12-29T15:23:08+01:00
 draft: false
 
 highlighted: true
-description: "The reason Ballistic Zen exists. An experience very few games give me."
+description: "The iterative process of designing Ballistic Zen's main game mechanic."
 
 resources:
 - name: thumbnail
   src: hoverblade-area-route-1.PNG
+
+tags:
+- game-dev
 ---
 
 Designing Flow in Ballistic Zen

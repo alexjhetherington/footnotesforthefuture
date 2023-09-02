@@ -5,10 +5,13 @@ draft: false
 
 highlighted: true
 externalLink: https://github.com/alexjhetherington/FootnoteUtilities
-description: "You build a house, and then you decide you want to move out of the country (I'm talking about moving to Godot)."
+description: "Tools I use to help me make games in Unity."
 
 resources:
 - name: thumbnail
   src: code-unity.PNG
+
+tags:
+- Game Dev
 ---
 test

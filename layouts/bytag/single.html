@@ -1,0 +1,40 @@
+{{ partial "header.html" . }}
+
+<div class="everythingContent">
+    {{ range $taxonomy, $terms := .Site.Taxonomies.tags }}
+    <h2>{{ $taxonomy }}</h2>
+    {{ range $terms }}
+
+    {{if (.Params.internallink) }}
+    {{.Scratch.Set "address" .Params.internallink}}
+    {{else if (.Params.externallink) }}
+    {{.Scratch.Set "address" .Params.externallink}}
+    {{else}}
+    {{.Scratch.Set "address" .Permalink}}
+    {{end}}
+
+    {{partial "everythingItem.html" .}}
+
+    {{end}}
+    {{end}}
+
+    <h2>Untagged</h2>
+    {{ range .Site.Pages }}
+    {{if and (eq .Params.tags nil) (ne .Params.date nil) (not .Params.hiddenFromSiteMap)}}
+
+    {{if (.Params.internallink) }}
+    {{.Scratch.Set "address" .Params.internallink}}
+    {{else if (.Params.externallink) }}
+    {{.Scratch.Set "address" .Params.externallink}}
+    {{else}}
+    {{.Scratch.Set "address" .Permalink}}
+    {{end}}
+
+    {{if not .Params.hiddenFromSiteMap}}
+    {{partial "everythingItem.html" .}}
+    {{end}}
+    {{end}}
+    {{end}}
+</div>
+
+{{ partial "footer.html" . }}

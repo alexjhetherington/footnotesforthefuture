@@ -5,6 +5,9 @@ draft: false
 highlighted: true
 externallink: "https://github.com/alexjhetherington/world"
 youtubeEmbed: "https://www.youtube.com/embed/YsUZFpyAaTg?rel=0&amp;"
-description: "Multiplayer chat room in which messages are stamped onto the world. Powered by SpatialOS."
+description: "Multiplayer chat room powered by SpatialOS. Source code only."
+
+tags:
+- games
 ---
 test stuff about this post

@@ -3,6 +3,8 @@ title: "About"
 date: 2018-03-05T13:10:48Z
 type: about
 draft: false
+
+hiddenFromSiteMap: true
 ---
 This site collects my projects. Most of the content is actually hosted elsewhere. If you would prefer to browse elsewhere: 
 

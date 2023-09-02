@@ -5,7 +5,10 @@ draft: false
 highlighted: true
 externallink: "https://www.youtube.com/watch?v=N-vXN4Nnk9E"
 youtubeEmbed: "https://www.youtube.com/embed/N-vXN4Nnk9E?rel=0&amp;"
-description: "7 years of my life in 50 minutes."
+description: "50 minute devlog of the making, from start to finish, of Ballistic Zen."
+
+tags:
+- game-dev
 ---
 test stuff about this post
 

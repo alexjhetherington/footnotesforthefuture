@@ -9,6 +9,9 @@ description: "Minimalist text game with lite base building. Not suitable for mob
 resources:
 - name: thumbnail
   src: adw_preview.png
+
+tags:
+- games
 ---
 test stuff about this post
 

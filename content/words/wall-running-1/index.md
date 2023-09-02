@@ -4,11 +4,14 @@ date: 2018-08-08T15:23:08+01:00
 draft: false
 thumbnail: /img/adw_preview.PNG
 highlighted: true
-description: "Getting wall running to work perfectly was a hassle. Totally worth it."
+description: "High level guide to programming wall running in Unity."
 
 resources:
 - name: thumbnail
   src: pillars.png
+
+tags:
+- game-dev
 ---
 
 Wall Running in Unity: Making It Work, Making It Feel Good
