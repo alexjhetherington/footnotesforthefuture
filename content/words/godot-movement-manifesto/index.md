@@ -54,7 +54,8 @@ You can find an example Godot Character Controller using `move_and_collide` [her
   * (Simpler) Ignore collisions at the bottom of the controller, and force a minimum distance distance to the floor below; this has the disadvantage of causing slope slide behaviour to become very confusing; *I do not recommend doing this if you have steep slopes in your game*
   * (More General) Perform additional tests "Up, forward, down" and use the results to potentially modify the final movement 
 * Blocking movement on slopes is tricky when multiple slopes intersect!
-* See my Godot controller [here](https://github.com/alexjhetherington/godot-character-controller-example/blob/main/player_demo.gd) - many techniques I use are appropriate for any character controller
+* Run physics at a fixed timestep; interpolate visually to prevent jitters
+* See my Godot controller [here](https://github.com/alexjhetherington/godot-character-controller-example/tree/main) - many techniques I use are appropriate for any character controller
 
 ## Godot Specifics
 * Physics nodes have been renamed since Shifty's Manifesto. [Example PR](https://github.com/godotengine/godot-proposals/issues/2867)
@@ -68,4 +69,6 @@ You can find an example Godot Character Controller using `move_and_collide` [her
   * `move_and_collide` performs automatic depentration which obfuscates some issues, and appears to have minor issues with vertical movement and slopes; but I nevertheless recommend it for most projects
   * AnimatableBody3D is a StaticBody that affects the environment, and could be used as a mostly drop in replacement. I have not tested this. 
 * **IMPORTANT** Godot physics is still buggy in Godot 4.0. Box collisions seem to work well, but Cylinder collisions are broken. Using [Jolt](https://github.com/godot-jolt/godot-jolt) is **absolutely mandatory** for custom character controller development.
-* See my Godot controller [here](https://github.com/alexjhetherington/godot-character-controller-example/blob/main/player_demo.gd) to see an example of using `move_and_collide`
+  * Jolt is non-deterministic; this means physics are not consistent - but physics are still predictable - there are no noticable downsides to movement using Jolt
+  * Depending on game mechanics (replays?) non-determinism might be a deal breaker - in this case fall back to default physics and the humble cube!
+* See my Godot controller [here](https://github.com/alexjhetherington/godot-character-controller-example/tree/main) to see an example of using `move_and_collide`
