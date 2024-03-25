@@ -18,29 +18,35 @@ Ballistic Zen Custom Maps Tutorial
 
 # Intro
 
-Version 1.5 of [Ballistic Zen]((https://store.steampowered.com/app/1966930/Ballistic_Zen/)) brings custom maps. Version 1.4 of [Ballistic Zen](https://store.steampowered.com/app/1966930/Ballistic_Zen/) previously brought custom lines. This page will explain how to create and use both.
+Guide is up-to-date as of *[Ballistic Zen]((https://store.steampowered.com/app/1966930/Ballistic_Zen/)) version 1.6.*
 
-Custom maps are not fully implemented yet. If you'd like me to work on them more, please buy the game on [steam](https://store.steampowered.com/app/1966930/Ballistic_Zen/), or chose to pay on [itch](https://footnotesforthefuture.itch.io/ballistic-zen). I would like to understand how much appetite for user generated content there is; if this release causes a spike in sales I will consider further development.
+Ballistic Zen Version 1.4 and above supports custom lines. Ballistic Zen Version 1.5 and up supports custom maps. This page will explain how to create and use both.
 
 **Custom maps** are built in Trenchbroom and currently support:
 
 * All textures that already exist in the game
+* Importing new textures
 * Collectables
 * Spawning the player (obviously!)
 * Custom lines
+* Trigger respawns (death zones)
+* Trigger set respawn points (respawn hubs)
 
 Custom maps do not currently support, in descending order of priority:
 
-* Importing new textures
-* Different visual styles for collectables
-* Custom respawn triggers
-* Custom spawn zones
 * Other entities (boost pads)
 * Pre-built lines (blue and white)
-* NPCs
 * Centralised hosting
+* In built models (trees)
+* Area blocking (player blocked from visiting an area until they have a given amount of respect)
+
+It is unlikely custom maps will ever support:
+* Custom models (please build everything in the editor)
+* Custom lighting (including modifying the skybox)
 
 **Custom Lines** are generated in game and the basic functionality is fully implemented. Further work required involves improved the management of lines (renaming, drafts, deleting, centralised hosting etc).
+
+If you'd like to encourage futher work on custom maps, please buy the game on [steam](https://store.steampowered.com/app/1966930/Ballistic_Zen/), or chose to pay on [itch](https://footnotesforthefuture.itch.io/ballistic-zen).
 
 # Custom Maps
 
@@ -49,7 +55,9 @@ Custom maps do not currently support, in descending order of priority:
 [Trenchbroom](https://trenchbroom.github.io/) is a free and open source level editor. To use it:
 
 * Follow [this link](https://github.com/TrenchBroom/TrenchBroom/releases)
-* Scroll down to the release you want (I chose 2022.2)
+* Scroll down to the release you want
+  * This guide uses *version 2022.2*
+  * *versions 2024+* may be incompatible
 * Scroll down a bit more to Assets
 * Choose the appropriate download. For me it was `TrenchBroom-Win64-v2022.2-RC3-Release.7z`
 
@@ -96,7 +104,19 @@ Here is a map I made: [Big Ramps](Big Ramps.map). `Right click -> Save Link As` 
 
 Currently the most official place to share your maps is the [discord server](https://discord.gg/XS29Pdr).
 
-Custom lines will work on custom maps so don't forget to share both. See the next section!
+Custom lines will work on custom maps so don't forget to share both. See the appropriate section below!
+
+### Custom Textures
+
+Ballistic Zen custom maps now support custom textures. Textures must be packed up in a '.wad' file.
+
+* Create '.wad' files for custom textures using external tools
+  * [Half-Life Texture Tools](https://github.com/yuraj11/HL-Texture-Tools) is easy to use
+  * Create any number of `.wad` files
+  * They can be named in any way
+* Save the wads to `%BallisticZenUserDataFolder%/player-maps/wads`
+  * You can find this on windows by going to `%AppData%`, going up a level, then going to `LocalLow\footnotesforthefuture\Ballistic Zen\player-maps\wads`
+* Tell Trenchbroom where to find them in the same was as initial setup
 
 # Custom Lines
 
