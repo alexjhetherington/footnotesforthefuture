@@ -70,9 +70,7 @@ Collision Shape:
 
 Notice how the collision shape is like a "wrapper" around the actual model geometry.
 
-
-This simplifies collision physics and is generally a good thing, but it also influences API design regarding meshes in a way that makes it difficult for us to identify the material at a given point.
-
+**All that is to say:** this separation of visual mesh and collision shape influences API design in a way that makes it difficult for us to identify the material at a given point.
 
 In Godot:
 
@@ -91,29 +89,47 @@ We can thus propose the following algorithm:
 
 Unfortunately step 3 is also a challenge: the Godot Mesh API does not offer a pleasant way to query materials spatially. This leads to our first major conclusions:
 
-* We cannot spatially differentiate materials on a visual mesh
+* We cannot spatially differentiate materials on a visual mesh trivially
 * If a visual mesh has only a single material and a player is standing on the collider associated with that visual mesh, we can be sure the player is standing on that material
-* If a visual mesh has multiple materials, we must split that visual mesh up based on material so that a player is always standing on a visual mesh with a single material. A visual mesh with 2 materials must be converted to 2 visual mesh.
+* If a visual mesh has multiple materials, we must split that visual mesh up based on material and determine which "sub-mesh" the player is standing on
 
 There are a few ways we can do this (and the choice is yours).
 
-## Simple MeshDataTool Queries at Run Time
+## Query All Triangles At Run Time
 
-Godot offers an API called MeshDataTool<sup>[7]</sup> that is intended for creating and editing meshes at run time.
+Godot offers a few APIs that return mesh information on a per material basis. Note: the Godot API refers to *surfaces* rather than *materials* when accessing data in this way because each group of information (vertices, faces, etc) does not change when the *material* is overriden.
 
-Using this we can perform the following algorithm:
+Using one of these APIs we can perform the following algorithm:
 
 1. Raycast down to identify the collision shape currently underneath the player
 2. Traverse the hierarchy to identify the visual mesh associated with the collision shape currently underneath the player
-3. Create a MeshDataTool for each material on the visual mesh; add all relevant triangles from the visual mesh to each MeshDataTool (this step can and should be cached)
-4. For every triangle in all MeshDataTools, perform a triangle raycast to determine if that triangle is under the player
-5. The result material is the material on the MeshDataTool that contains the found triangle
+3. Split the mesh into a "sub-mesh" for each material
+4. For every triangle in each "sub-mesh", perform a triangle raycast to determine if that triangle is under the player
+5. The triangle under the player is part of the "sub-mesh" that has the result material
 
-Here is an [example](https://github.com/alexjhetherington/godot-identifying-materials-examples/tree/master/raycast_mesh_data_tool) version.
+The Mesh API<sup>[10]</sup> offers methods to return all the necessary information:
+
+```
+for surface_idx in mesh_instance.mesh.get_surface_count():
+
+    var surface_arrays = mesh_instance.mesh.surface_get_arrays(surface_idx)
+    var face_vertex_indices := surface_arrays[Mesh.ARRAY_INDEX] as PackedInt32Array
+
+    for face_index in face_vertex_indices.size() / 3:
+      var vertex_1 = surface_arrays[Mesh.ARRAY_VERTEX][face_index * 3]
+      var vertex_2 = surface_arrays[Mesh.ARRAY_VERTEX][face_index * 3 + 1]
+      var vertex_3 = surface_arrays[Mesh.ARRAY_VERTEX][face_index * 3 + 2]
+      
+      # Build and test triangle
+```
+
+Alternatively, Godot offers an API called MeshDataTool<sup>[7]</sup> that is intended for creating and editing meshes at run time.
+
+Here is a full [example](https://github.com/alexjhetherington/godot-identifying-materials-examples/tree/master/raycast_mesh_data_tool) version using MeshDataTools.
 
 My version builds the MeshDataTool for each Visual Mesh the first time it is stepped on. This could be done on scene load.
 
-The main pitfall with writing this algorithm is making sure that you correctly translate locations from the world (where the visual mesh instance is) to and from the local space of the MeshDataTools (or put differently; you need to account for the fact that MeshDataTools don't have a concept of being "somewhere" in the world).
+The main pitfall with writing this algorithm is making sure that you correctly translate locations from the world (where the visual mesh instance is) to and from the local space of the "sub-mesh" in cases where the "sub-mesh" does not have a world concept (e.g. when using MeshDataTools).
 
 **Pros of this approach**:
 
@@ -128,9 +144,9 @@ If you have large meshes in your game, this approach can introduce significant f
 
 I would recommend this solution only if you are searching for a pipeline agnostic workflow. 
 
-### Optimising MeshDataTools
+### Optimising Triangle Queries
 
-If you're particularly clever or wedded to the idea of a pipeline agnostic solution, you might propose some optimizations to the MeshDataTool approach.
+If you're particularly clever or wedded to the idea of a pipeline agnostic solution, you might propose some optimizations to the triangle query approach.
 
 The idea for optimisation is as follows:
 
@@ -140,7 +156,7 @@ The idea for optimisation is as follows:
 
 You can completely ignore triangles that are known to be irrelevant:
 
-* Triangles where the normal faces sideways or down are walls or ceilings and not relevant for footsteps
+* Triangles where the normal faces sideways or down are walls or ceilings and not relevant for footsteps (the MeshDataTools api makes this trivial!)
 
 You can skip raycasting triangles at run time based on the input position:
 
@@ -269,7 +285,7 @@ From most to least, I would recommend you choose your method of identifying mate
 
 1. Raycast Based / Mesh Preprocessing - this is the most performant in most scenarios, and is relatively straightforward
 2. Camera Based / Custom Material - initial setup is costly but is thereafter straightforward
-3. Raycast Based / MeshDataTool Triangle Raycasts - this method is not performant, but at least requires little manual setup
+3. Raycast Based / Triangle Raycasts - this method is not performant, but at least requires little manual setup
 4. Camera Based / Duplicate World - the level of manual work required to set this up is extremely costly (but it might be different based on your workflow!)
 
 My game, **3 Shots Left**, currently uses Camera Based / Custom Materials because I import levels using a Godot addon that skips the import process, and the addon is not easily modifiable. I might switch to Raycast Based / Mesh Preprocessing in the future!
