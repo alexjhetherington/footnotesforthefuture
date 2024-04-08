@@ -70,7 +70,7 @@ Collision Shape:
 
 Notice how the collision shape is like a "wrapper" around the actual model geometry.
 
-**All that is to say:** this separation of visual mesh and collision shape influences API design in a way that makes it difficult for us to identify the material at a given point.
+**All that is to say:** this separation of visual mesh and collision shape influences API design in a way that makes it difficult for us to identify the material at a given point. See Appendix 2.
 
 In Godot:
 
@@ -305,6 +305,16 @@ This repo offers some inspiration for variations on the preprocessed mesh splitt
 * The preprocessor does *not* remove the initial collision shape
 * The preprocessor creates collision shapes for each material *on a different layer*; checking for material is intended to be done on a different layer than move physics (for example)
 * Without multiple visual meshes there needs to be an alternate way of assocating eacah collision shape with material; node *meta* data is used for this purpose
+
+# Appendix 2 - mesh raycasts
+
+This problem would be much simpler if we had an API that:
+
+1. Allowed us to check raycast intersections with visual meshes
+2. Returned the material, or information that allows us to deduce the material, like a face index
+
+Of course people have asked for this. See related proposals [here](https://github.com/godotengine/godot-proposals/issues/3909) and [here](https://github.com/godotengine/godot-proposals/issues/2863).
+
 
 [1]: https://docs.godotengine.org/en/stable/classes/class_mesh.html
 [2]: https://docs.godotengine.org/en/stable/classes/class_arraymesh.html
