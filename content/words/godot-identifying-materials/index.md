@@ -3,7 +3,7 @@ title: "Material Based Footstep Sounds in Godot"
 date: 2024-03-24T15:23:08+01:00
 draft: false
 highlighted: true
-description: "An introduction to various implementations for identifying materials based on world position in Godot."
+description: "An intro to implementing identifying materials based on world position in Godot."
 
 resources:
 - name: thumbnail
