@@ -10,7 +10,7 @@
     {{else if (.Params.externallink) }}
     {{.Scratch.Set "address" .Params.externallink}}
     {{else}}
-    {{.Scratch.Set "address" .Permalink}}
+    {{.Scratch.Set "address" .RelPermalink}}
     {{end}}
 
     {{partial "everythingItem.html" .}}
@@ -27,7 +27,7 @@
     {{else if (.Params.externallink) }}
     {{.Scratch.Set "address" .Params.externallink}}
     {{else}}
-    {{.Scratch.Set "address" .Permalink}}
+    {{.Scratch.Set "address" .RelPermalink}}
     {{end}}
 
     {{if not .Params.hiddenFromSiteMap}}

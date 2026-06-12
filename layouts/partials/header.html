@@ -7,16 +7,16 @@
 	<title>{{ .Title }}</title>
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
-	<link rel="shortcut icon" href="/img/favicon.ico">
+	<link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}">
 	{{ hugo.Generator }}
 </head>
 <body>
 	<header>
 		<div class="footnotes"> 
-			<a href="{{ .Site.BaseURL }}">
+			<a href="{{ "/" | relURL }}">
 				1. FOOTNOTES FOR THE FUTURE				
 				<div class="footnotesSubtitle">
 					by Alex Hetherington
