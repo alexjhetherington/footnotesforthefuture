@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 
 <div class="highlightedContent">
-	{{range where .Pages ".Params.pinned" true}}
+	{{range where .Site.RegularPages ".Params.pinned" true}}
 
 	{{if (.Params.internallink) }}
 	{{.Scratch.Set "address" .Params.internallink}}
@@ -13,7 +13,7 @@
 	{{partial "highlightedItem.html" .}}
 
 	{{end}}
-	{{range where .Pages ".Params.highlighted" true}}
+	{{range where .Site.RegularPages ".Params.highlighted" true}}
 	{{if or (eq .Params.pinned false) (eq .Params.pinned nil)}}
 
 	{{if (.Params.internallink) }}

@@ -30,8 +30,8 @@ Here is my progress so far:
 We don't need much to create the wall running effect:
 
 * A 3d environment filled with colliders which act as walls
-* A player whose movement we will abstractly define as a 3d vector every frame. I use the built in Character Controller<sup>[1]</sup> as a base
-* Raycasts<sup>[2]</sup>:  lasers we can fire at the environment that will report information about things they hit<sup>[3]</sup>
+* A player whose movement we will abstractly define as a 3d vector every frame. I use the built in Character Controller[¹][1] as a base
+* Raycasts[²][2]:  lasers we can fire at the environment that will report information about things they hit[³][3]
 
 At a high level the algorith for wall running is, each frame:
 
@@ -75,7 +75,7 @@ You might choose player forwards to be the current look Vector, or the current m
 
 We have a wall and we have a direction. Now it is up to you to write code to move your player character in this direction. I will leave this as an excercise to you.
 
-A tip: RaycastHit.normal and RaycastHit.point can be used to create a unity plane<sup>[4]</sup>. Plane.GetDistanceToPoint will tell us the current distance from wall. You can use this to add a velocity or set the player's position so they arrive at the correct distance from the wall.
+A tip: RaycastHit.normal and RaycastHit.point can be used to create a unity plane[⁴][4]. Plane.GetDistanceToPoint will tell us the current distance from wall. You can use this to add a velocity or set the player's position so they arrive at the correct distance from the wall.
 
 ### Making it feel good
 
@@ -91,7 +91,7 @@ Most of these are out of the scope of the article, but I will talk about camera 
 
 #### Camera Tilt
 
-The most common camera FX, seen in Mirror's Edge and Titanfall for example, is a camera tilt during the wall run. Creating this effect is very simple. I use a tweening library called Leantween <sup>[5]</sup>. There are many other tweening libraries.
+The most common camera FX, seen in Mirror's Edge and Titanfall for example, is a camera tilt during the wall run. Creating this effect is very simple. I use a tweening library called Leantween[⁵][5]. There are many other tweening libraries.
 
 The leantween version of this looks like:
 

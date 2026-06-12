@@ -27,7 +27,7 @@ The purpose of this article is to define Flow in Ballistic Zen, to describe the 
 
 ## What is Flow?
 
-Flow is already a term used to describe a mental state where a person is in "The Zone"<sup>[1]</sup>. My definition of Flow is an abstract description of game mechanics, but the two definitions are related in that a game that successfully implements the mechanics I describe will give rise to the psychological state of Flow. For the rest of this article, the term Flow will refer to the below definition.
+Flow is already a term used to describe a mental state where a person is in "The Zone"[¹][1]. My definition of Flow is an abstract description of game mechanics, but the two definitions are related in that a game that successfully implements the mechanics I describe will give rise to the psychological state of Flow. For the rest of this article, the term Flow will refer to the below definition.
 
 Flow consists of 2 distinct but related concepts
 

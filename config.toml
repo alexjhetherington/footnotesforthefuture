@@ -1,7 +1,7 @@
 author              = "Alex Hetherington"
 title               = "Footnotes for the Future"
 
-baseURL = "http://www.footnotesforthefuture.com/"
+baseURL = "https://www.footnotesforthefuture.com/"
 
 [menu]
 [[menu.main]]

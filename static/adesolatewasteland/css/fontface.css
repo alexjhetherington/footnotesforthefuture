@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: 'DejaVuSansMono';
+	src: url('./font/DejaVuSansMono.eot');
+	src: url('./font/DejaVuSansMono.eot?#iefix') format('eot'),
+		 url('./font/DejaVuSansMono.woff') format('woff'),
+		 url('./font/DejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'monospace';
+	src: url('./font/Monospace.ttf') format('truetype');
+}

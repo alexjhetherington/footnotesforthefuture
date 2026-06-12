@@ -29,7 +29,7 @@ For other readers:
 
 ## The Most Important Decision You Have To Make
 
-So, you've made a start on splitting up your classes into distinct functional units<sup>[1]</sup>. But your classes are a mess. There are references flying around everywhere. You just want to watch an NPC walk around so you add it to a new scene along with a ground plane. Suddenly - a null pointer exception. You need to add the player to fix it. Another. This time you need to add the UI. Then you need the loading mechanism. Instantly your entire game is in the new scene. You can't live like this!
+So, you've made a start on splitting up your classes into distinct functional units[¹][1]. But your classes are a mess. There are references flying around everywhere. You just want to watch an NPC walk around so you add it to a new scene along with a ground plane. Suddenly - a null pointer exception. You need to add the player to fix it. Another. This time you need to add the UI. Then you need the loading mechanism. Instantly your entire game is in the new scene. You can't live like this!
 
 There are many decisions you will have to make. But there's only one question, really.
 

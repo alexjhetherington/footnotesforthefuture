@@ -57,9 +57,9 @@ Step 3 is relatively straightforward but will also be addressed at the end of th
 
 Due to the complexity of meshes these days, games usually use different objects for visuals and physics. 
 
-The material is stored on what I will call the *Visual Mesh.* In Godot you will often see this referred to as *Mesh*<sup>[1]</sup>, or *ArrayMesh*<sup>[2]</sup>. *MeshInstance*<sup>[3]</sup> refers to a specific instantiation of a given mesh (you can re-use the same *Mesh* multiple times in the same scene).
+The material is stored on what I will call the *Visual Mesh.* In Godot you will often see this referred to as *Mesh*[¹][1], or *ArrayMesh*[²][2]. *MeshInstance*[³][3] refers to a specific instantiation of a given mesh (you can re-use the same *Mesh* multiple times in the same scene).
 
-Our character physically interacts with what I will call the *Collision Shape.* In Godot you most often see a *Shape3D*<sup>[4]</sup> (the shape itself) referenced by a *CollisionShape3D*<sup>[5]</sup> as a child of a *StaticBody*<sup>[6]</sup>.
+Our character physically interacts with what I will call the *Collision Shape.* In Godot you most often see a *Shape3D*[⁴][4] (the shape itself) referenced by a *CollisionShape3D*[⁵][5] as a child of a *StaticBody*[⁶][6].
 
 *Collision Shapes* are often much simpler than the *Visual Mesh.*
 
@@ -107,7 +107,7 @@ Using one of these APIs we can perform the following algorithm:
 4. For every triangle in each "sub-mesh", perform a triangle raycast to determine if that triangle is under the player
 5. The triangle under the player is part of the "sub-mesh" that has the result material
 
-The Mesh API<sup>[10]</sup> offers methods to return all the necessary information:
+The Mesh API[¹⁰][10] offers methods to return all the necessary information:
 
 ```
 for surface_idx in mesh_instance.mesh.get_surface_count():
@@ -123,7 +123,7 @@ for surface_idx in mesh_instance.mesh.get_surface_count():
       # Build and test triangle
 ```
 
-Alternatively, Godot offers an API called MeshDataTool<sup>[7]</sup> that is intended for creating and editing meshes at run time.
+Alternatively, Godot offers an API called MeshDataTool[⁷][7] that is intended for creating and editing meshes at run time.
 
 Here is a full [example](https://github.com/alexjhetherington/godot-identifying-materials-examples/tree/master/raycast_mesh_data_tool) version using MeshDataTools.
 
@@ -166,7 +166,7 @@ You can influence the order triangles are checked using heuristics:
 
 * Triangles with a centre close to the player are more likely to be triangles the player is standing on
 
-I experimented with OctTrees<sup>[8]</sup> and the simpler data structure of splitting the world into chunks (non recursively) with some success, but I was never able to entirely prevent slow queries. I don't recommend you try to optimise the MeshDataTool approach.
+I experimented with OctTrees[⁸][8] and the simpler data structure of splitting the world into chunks (non recursively) with some success, but I was never able to entirely prevent slow queries. I don't recommend you try to optimise the MeshDataTool approach.
 
 That being said, I would be interested in hearing about your experiments in this area!
 
@@ -177,7 +177,7 @@ Performing a raycast against each triangle of a visual mesh is expensive. As an 
 With this technique, the algorithm looks like this (see Appendix 1 for discussion on how this might vary):
 
 1. Pre-process:
-  1. Use EditorScenePostImport<sup>[9]</sup> to override the way Godot imports models:
+  1. Use EditorScenePostImport[⁹][9] to override the way Godot imports models:
   2. Create a visual mesh *for each material*
   3. Create a StaticBody with appropriate CollisionShape *for each material*
   4. Remove the default generated Visual Mesh and StaticBody
@@ -199,7 +199,7 @@ Once the mesh has been split, finding the material is a trivial process.
 
 **Cons of this approach**:
 
-* Potentially reduces collision reliability (read convex vs concave collisions<sup>[10]</sup>)
+* Potentially reduces collision reliability (read convex vs concave collisions[¹⁰][10])
 * Relies on the mesh import pipeline; if you use level design tool addons inside Godot it is likely you would need to modify those to achieve a similar affect
 
 This approach receives my most general recommendation due its performance and relative ease of implementation. See Appendix 1 for further discussion.
@@ -227,7 +227,7 @@ If your game is moddable, this approach may be unsuitable: it can be difficult t
 
 ## Duplicate Meshes
 
-The simplest implementation of the camera based approach is to duplicate the world environment, override materials on the duplicate, and use visual culling groups<sup>[11]</sup> to ensure the main camera doesn't see the duplicate world environment and the material camera doesn't see the original world environment.
+The simplest implementation of the camera based approach is to duplicate the world environment, override materials on the duplicate, and use visual culling groups[¹¹][11] to ensure the main camera doesn't see the duplicate world environment and the material camera doesn't see the original world environment.
 
 Here is an [example](https://github.com/alexjhetherington/godot-identifying-materials-examples/tree/master/camera_duplicate_mesh).
 
@@ -244,7 +244,7 @@ The manual work required for this approach leads me to recommend against it - bu
 
 ## Custom Material
 
-Godot shaders have access to the viewing camera's culling groups<sup>[12]</sup>. We can abuse this to create a *custom material* that *is viewed differently by different cameras*. In this way, we can achieve the same effect as the previous method without duplicating meshes.
+Godot shaders have access to the viewing camera's culling groups[¹²][12]. We can abuse this to create a *custom material* that *is viewed differently by different cameras*. In this way, we can achieve the same effect as the previous method without duplicating meshes.
 
 An example with groups:
 
