@@ -1,7 +1,7 @@
 ---
-title: "Anvil Level Design (Blender Addon)"
+title: "Anvil Level Design Intro (Blender Addon)"
 date: 2026-01-03T14:48:27Z
-draft: false
+draft: true
 highlighted: true
 externallink: "https://www.youtube.com/watch?v=dNbCiGadp5k"
 youtubeEmbed: "https://www.youtube.com/embed/dNbCiGadp5k?rel=0&amp;"

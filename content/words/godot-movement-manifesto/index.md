@@ -19,8 +19,8 @@ tags:
 You can find an example Godot Character Controller using `move_and_collide` [here](https://github.com/alexjhetherington/godot-character-controller-example/tree/main)
 
 ## Motivation
-* I spent a long time learning about and creating character controllers in Unity for [Ballistic Zen] (https://store.steampowered.com/app/1966930/Ballistic_Zen/)
-* [Shifty's Godot Character Movement Manifesto] (https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) is a bit out of date
+* I spent a long time learning about and creating character controllers in Unity for [Ballistic Zen](https://store.steampowered.com/app/1966930/Ballistic_Zen/)
+* [Shifty's Godot Character Movement Manifesto](https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) is a bit out of date
 * I switched to Godot and had to learn a lot, again. I want to help others in my situation!
 
 ## Context
